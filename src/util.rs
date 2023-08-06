@@ -17,7 +17,7 @@ pub fn get_i32(prompt: &str) -> i32 {
         .expect("Error parsing integer");
 }
 
-pub fn check_sorted(values: &Vec<i32>) -> bool {
+pub fn check_sorted(values: &[i32]) -> bool {
     for i in 1..values.len() {
         if values[i - 1] > values[i] {
             return false;

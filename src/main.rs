@@ -1,6 +1,6 @@
 mod prng;
-mod quicksort;
-mod util;
+pub mod quicksort;
+pub mod util;
 
 use prng::{
     make_random_vec,
