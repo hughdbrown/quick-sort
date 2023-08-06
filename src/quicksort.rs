@@ -1,4 +1,6 @@
-fn quick_sort_helper(values: &mut [i32], lo: usize, hi: usize) {
+fn quick_sort_helper<T>(values: &mut [T], lo: usize, hi: usize) 
+    where T: Ord + Copy
+{
     if lo < hi {
         let pivot = values[lo];
         let mut i = lo;
@@ -27,7 +29,9 @@ fn quick_sort_helper(values: &mut [i32], lo: usize, hi: usize) {
 }
 
 
-pub fn quick_sort(values: &mut [i32]) {
+pub fn quick_sort<T>(values: &mut [T])
+    where T: Ord + Copy
+{
     if values.len() > 1 {
         quick_sort_helper(values, 0, values.len() - 1);
     }
