@@ -1,6 +1,8 @@
 use std::io;
 use std::io::Write;
 
+use adjacent_pair_iterator::AdjacentPairIterator;
+
 
 // Prompt the user for an i32.
 pub fn get_i32(prompt: &str) -> i32 {
@@ -17,13 +19,11 @@ pub fn get_i32(prompt: &str) -> i32 {
         .expect("Error parsing integer");
 }
 
-pub fn check_sorted(values: &[i32]) -> bool {
-    for i in 1..values.len() {
-        if values[i - 1] > values[i] {
-            return false;
-        }
-    }
-    true
+pub fn check_sorted<T>(values: &[T]) -> bool
+    where T: PartialOrd
+{
+    values.adjacent_pairs()
+        .all(|arg: (&T, &T)| arg.0 <= arg.1)
 }
 
 pub fn print_vec(vec: &Vec<i32>, num_items: i32) {
